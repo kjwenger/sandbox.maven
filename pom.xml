@@ -37,7 +37,7 @@
                                 <directory>${project.build.sourceDirectory}</directory>
                                 <directory>${project.build.directory}/generated-sources</directory>
                             </directories>
-                            <configFile>eclipse-java-google-style.xml</configFile>
+                            <configFile>${project.basedir}/src/main/styleguide/eclipse-java-google-style.xml</configFile>
                         </configuration>
                         <executions>
                             <execution>
