@@ -6,7 +6,6 @@
     <groupId>io.github.kjwenger</groupId>
     <artifactId>sandbox-maven</artifactId>
     <version>0.0.1-SNAPSHOT</version>
-    <packaging>pom</packaging>
     <developers>
         <developer>
             <id>KJW</id>
@@ -23,7 +22,73 @@
         <maven.compiler.target>1.8</maven.compiler.target>
         <maven.compiler.source>1.8</maven.compiler.source>
     </properties>
-    <modules>
-        <module>sandbox-formatter-maven-plugin</module>
-    </modules>
+    <profiles>
+        <profile>
+            <id>formatter-maven-plugin</id>
+            <build>
+                <plugins>
+                    <plugin>
+                        <groupId>net.revelc.code.formatter</groupId>
+                        <artifactId>formatter-maven-plugin</artifactId>
+                        <version>2.16.0</version>
+                        <configuration>
+                            <encoding>UTF-8</encoding>
+                            <directories>
+                                <directory>${project.build.sourceDirectory}</directory>
+                                <directory>${project.build.directory}/generated-sources</directory>
+                            </directories>
+                            <configFile>eclipse-java-google-style.xml</configFile>
+                        </configuration>
+                        <executions>
+                            <execution>
+                                <id>format</id>
+                                <goals>
+                                    <goal>format</goal>
+                                </goals>
+                                <phase>process-resources</phase>
+                            </execution>
+                            <execution>
+                                <id>validate</id>
+                                <goals>
+                                    <goal>validate</goal>
+                                </goals>
+                                <phase>compile</phase>
+                            </execution>
+                        </executions>
+                    </plugin>
+                </plugins>
+            </build>
+        </profile>
+        <profile>
+            <id>google-java-format</id>
+            <build>
+                <plugins>
+                    <plugin>
+                        <groupId>com.theoryinpractise</groupId>
+                        <artifactId>googleformatter-maven-plugin</artifactId>
+                        <version>1.7.5</version>
+                        <executions>
+                            <execution>
+                                <id>reformat-sources</id>
+                                <configuration>
+                                    <includeStale>false</includeStale>
+                                    <style>GOOGLE</style>
+                                    <formatMain>true</formatMain>
+                                    <formatTest>true</formatTest>
+                                    <filterModified>false</filterModified>
+                                    <skip>false</skip>
+                                    <fixImports>false</fixImports>
+                                    <maxLineLength>100</maxLineLength>
+                                </configuration>
+                                <goals>
+                                    <goal>format</goal>
+                                </goals>
+                                <phase>process-sources</phase>
+                            </execution>
+                        </executions>
+                    </plugin>
+                </plugins>
+            </build>
+        </profile>
+    </profiles>
 </project>
