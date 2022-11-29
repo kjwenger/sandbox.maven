@@ -11,10 +11,10 @@ In order to try the test tag exclusions, simply run:
 ```shell
 # Should run all tests,
 # software prints colored in green and hardware prints colored in red
-mvn test --activate-profiles test-hardware
+mvn test --activate-profiles test-hardware # a.k.a. mvn test -P test-hardware
 ```
 
 ```shell
 # Should only run software tests, prints colored in green
-mvn test --activate-profiles test-software
+mvn test --activate-profiles test-software # a.k.a. mvn test -P test-software
 ```
