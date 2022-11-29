@@ -16,4 +16,11 @@
         <module>sandbox-test-tagging-junit4</module>
         <module>sandbox-test-tagging-junit5</module>
     </modules>
+    <dependencies>
+        <dependency>
+            <groupId>com.diogonunes</groupId>
+            <artifactId>JColor</artifactId>
+            <scope>test</scope>
+        </dependency>
+    </dependencies>
 </project>
